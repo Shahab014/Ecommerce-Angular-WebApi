@@ -1,0 +1,36 @@
+<div class="d-flex align-items-center justify-content-center container">s
+    <div class="card mt-5">
+        <div class="card-body p-md-5 bg-light">
+            <form [formGroup]="uploadForm" (ngSubmit)="submit()">
+                <h3 class="mb-4">Add New Product</h3>
+                <div class="mb-4 ">
+                    <input formControlName="ProductName" type="text" class="form-control"
+                        placeholder="Enter Product Name">
+                </div>
+                <div class="mb-4 ">
+                    <input formControlName="ProductPrice" type="text" class="form-control"
+                        placeholder="Enter Product Price">
+                </div>
+                <div class="mb-4 ">
+                    <input formControlName="color" type="text" class="form-control" placeholder="Enter Product Color">
+                </div>
+                <div class="mb-4 ">
+                    <input formControlName="category" type="text" class="form-control"
+                        placeholder="Enter Product Category">
+                </div>
+                <div class="mb-4 ">
+                    <textarea formControlName="description" type="text" class="form-control"
+                        placeholder="Enter Product Description"></textarea>
+                </div>
+                <div class="mb-4">
+                    <!-- <label for="image">Upload Image</label> -->
+                    <!-- <input ngModel name="image" type="file" (change)="showPreview($event)" multiple="multiple"> -->
+                    <!-- <input type="button" value="upload" (click)="onUpload()"> -->.
+                    <input type="file" accept="image/*" (change)="showPreview($event)" class="form-group" />
+                </div>
+
+                <button class="btn btn-primary btn-block w-100 mb-4">Add Product</button>
+            </form>
+        </div>
+    </div>
+</div>

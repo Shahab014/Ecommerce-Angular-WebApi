@@ -1,0 +1,25 @@
+ul {
+    margin-left: 25%;
+}
+
+.suggested-result {
+    position: absolute;
+    display: list-item;
+    z-index: 10;
+    background-color: none;
+    width: 300px;
+    top: 45px;
+    right: 8.7%;
+    list-style-type: none;
+}
+
+.suggested-result li {   
+    border: 1px solid #ddd;    
+    background-color: #fff;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.suggested-result li a {
+    cursor: pointer;
+}

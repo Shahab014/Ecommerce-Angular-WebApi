@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+
+body {
+    font-family: sans-serif;
+}
+
+.carousel-caption {
+    background-color: #00000082;
+    border-radius: 5px;
+}
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+    background-color: black;
+    border-radius: 5px;
+}

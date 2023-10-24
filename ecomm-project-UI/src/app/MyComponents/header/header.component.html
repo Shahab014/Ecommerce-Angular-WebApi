@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" routerLink="/"><h3>Ecommerce</h3></a>
+
+        <div [ngSwitch]="menyType" class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul *ngSwitchCase="'default'" class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item mx-3">
+                    <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a class="nav-link" routerLink="/seller-auth">Seller</a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a class="nav-link" routerLink="/user-auth">Login/Sign-Up</a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a class="nav-link" href="#">Cart ({{cartItem}})</a>
+                </li>
+            </ul>
+
+            <ul *ngSwitchCase="'user'" class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item mx-3">
+                    <a class="nav-link" routerLink="/seller-auth">Seller</a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a class="nav-link" routerLink="user-auth">{{userName | titlecase}}</a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a class="nav-link" style="cursor: pointer;" routerLink="/my-orders">My Orders</a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a class="nav-link" style="cursor: pointer;" (click)="userLogout()">Logout</a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a class="nav-link" style="cursor: pointer;"  [routerLink]="cartItem?'cart-page':null">Cart ({{cartItem}})</a>
+                </li>
+            </ul>
+
+            <ul *ngSwitchCase="'seller'" class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item mx-3">
+                    <a class="nav-link" routerLink="/seller-add-product">Add Product</a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a class="nav-link active" aria-current="page" routerLink="/seller-home">Product List</a>
+                </li>
+
+                <li class="nav-item mx-3">
+                    <a style="cursor: pointer;" class="nav-link" (click)="logout()">Logout</a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a class="nav-link" href="#">{{sellerName | titlecase}}</a>
+                </li>
+            </ul>
+
+            <form *ngIf="menyType!=='seller'" class="d-flex">
+                <input (keyup)="searchProducts($event)" (blur)="hideSearch()" class="form-control me-2" type="search"
+                    placeholder="Search" aria-label="Search">
+                <ul class="suggested-result" *ngIf="searchResults">
+                    <li *ngFor="let item of searchResults.slice(0,5)| searchFilter: filteredString">
+                        <a (mousedown)="redirectToDetails(item.id)">{{item.ProductName}}</a>
+                    </li>
+                </ul>
+                <button (click)="submitSearch(filteredString)" class="btn btn-outline-success"
+                    type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>

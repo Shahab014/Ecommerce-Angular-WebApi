@@ -1,0 +1,49 @@
+<div class="bg-dark main">
+
+    <div class="d-flex align-items-center justify-content-center">
+        <div *ngIf="showLogin" class="card mt-5">
+            <div class="card-body p-md-5 bg-light">
+                <form #myForm="ngForm" (ngSubmit)="signUp(myForm)">
+                    <h3 class="d-flex align-items-center justify-content-center form-outline mb-4">Sign Up</h3>
+                    <div class="form-outline mb-4 border rounded-circle">
+                        <input ngModel name="name" type="text" placeholder="Enter Name" required>
+                    </div>
+                    <div class="form-outline mb-4">
+                        <input ngModel name="email" type="text" placeholder="Enter Email" required>
+                    </div>
+                    <div class="form-outline mb-4">
+                        <input ngModel name="password" type="text" placeholder="Enter Password" required>
+                    </div>
+                    <button [disabled]="!myForm.valid" type="submit"
+                        class="btn btn-primary btn-block w-100 mb-4">SignUp</button>
+                    <p>Already Have Account? <a style="color: blueviolet; cursor: pointer;" (click)="openLogin()">Click
+                            to Login</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="d-flex align-items-center justify-content-center ">
+        <div *ngIf="!showLogin" class="card mt-5">
+            <div class="card-body p-md-5 bg-light">
+                <form #userForm ="ngForm" (ngSubmit)="Login(userForm.value)">
+                    <h3 class="d-flex align-items-center justify-content-center form-outline mb-4">User Login</h3>
+                    <div class=" mb-4">
+                        <input #email = "ngModel" name="email" type="text" placeholder="Enter Email" ngModel required>
+                        <small *ngIf="email.invalid && email.touched">Please Enter Valid Email</small>
+                    </div>
+                    <div class=" mb-4">
+                        <input #password = "ngModel" name="password" type="password" placeholder="Enter Password" ngModel required="">
+                        <small *ngIf="password.invalid && password.touched">Incorrect password</small>
+
+                    </div>
+                    <button [disabled]="userForm.invalid"
+                        class="btn btn-primary btn-block w-100 mb-4">Login</button>
+                    <p>Already Have Account? <a style="color: blueviolet; cursor: pointer;" (click)="openSignUp()">Click
+                            to SignUp</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

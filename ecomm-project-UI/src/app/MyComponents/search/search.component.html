@@ -1,0 +1,24 @@
+<div class="background" *ngIf="(searchResults | searchFilter: filteredString).length === 0">
+    <div class="mainbox">
+        <div class="err">4</div>
+        <div class="err1">0</div>
+        <div class="err2">4</div>
+        <div class="msg">Maybe this page moved? Got deleted? Is hiding out in quarantine? Never existed in the first
+            place?<p>Let's go <a routerLink="/home">home</a> and try from there.</p>
+        </div>
+    </div>
+</div>
+
+<div class="row search-item" *ngFor="let item of searchResults | searchFilter: filteredString">
+    <div class="col-sm-3">
+        <a routerLink="/details/{{item.id}}">
+            <img src="{{item.avatar}}" alt="">
+        </a>
+    </div>
+    <div class="col-sm-6 details">
+        <h6><a routerLink="/details/{{item.id}}">{{item.ProductName}}</a></h6>
+        <p><b>Price: {{item.ProductPrice}}</b></p>
+        <p><span>color: {{item.Color}}</span><span>Category: {{item.Category}}</span></p>
+        <p>{{item.Description}}</p>
+    </div>
+</div>
